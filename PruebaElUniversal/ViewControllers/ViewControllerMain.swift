@@ -106,7 +106,7 @@ extension ViewControllerMain: OnUINavigationBar{
             let visibleViewController = navigationController?.visibleViewController as! UIViewControllerGeneric
             visibleViewController.showInidicator(uiView: visibleViewController.view)
         
-            if let myWebsite = URL(string: "http://itunes.apple.com/app/idXXXXXXXXX") {//Enter link to your app here
+            if let myWebsite = URL(string: url!) {//Enter link to your app here
                 let objectsToShare = [ myWebsite] as [Any]
                 let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 
