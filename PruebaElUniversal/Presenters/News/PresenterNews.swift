@@ -8,13 +8,17 @@
 import Foundation
 
 class PresenterNews: DelegatePresenterNews{
+    
     private var isOnSneding = false
     private let delegateViewNews: DelegateViewNews
     init(delegateViewNews: DelegateViewNews) {
         self.delegateViewNews = delegateViewNews
     }
+    func getIsOnSneding() -> Bool {
+        return isOnSneding
+    }
     func sendRequestNews(start: Int, end: Int) {
-        if (isOnSneding){
+        if !isOnSneding {
             isOnSneding = true
             let request = NSMutableURLRequest(url: NSURL(string: Constants.URL.URL_BASE + Constants.URL.END_POINT_NEWS + "\(start)/\(end)")! as URL)
             let session = URLSession.shared

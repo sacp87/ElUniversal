@@ -13,6 +13,6 @@ protocol DelegateViewNews:class{
     func errorRequestNews(message:String)
 }
 protocol DelegatePresenterNews:class{
-    
+    func getIsOnSneding() -> Bool
     func sendRequestNews(start: Int, end: Int)
 }

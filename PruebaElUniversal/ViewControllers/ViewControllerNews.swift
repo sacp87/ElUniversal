@@ -52,18 +52,24 @@ extension UIViewControllerNews{
         
         refreshControl.addTarget(self, action: #selector(refeshNews), for: .valueChanged)
     }
-    
     @objc private func refeshNews(){
-        welcomeNews = []
+    
         presenterNews = PresenterNews(delegateViewNews: self)
-        presenterNews?.sendRequestNews(start: 0, end: 10)
+        if !presenterNews!.getIsOnSneding(){
+            welcomeNews = []
+            presenterNews?.sendRequestNews(start: 0, end: 10)
+        }else{
+            self.refreshControl.endRefreshing()
+            hideInidicator()
+        }
+        
     }
      
 }
 extension UIViewControllerNews: DelegateViewNews {
     func resultRequestCorrectNews(responseNews: [PojoNews.Response.WelcomeNews]) {
         hideInidicator()
-        self.refreshControl.endRefreshing()
+        refreshControl.endRefreshing()
         welcomeNews.append(contentsOf: responseNews)
         collectionView!.dataSource = self
         collectionView!.delegate = self
@@ -72,13 +78,13 @@ extension UIViewControllerNews: DelegateViewNews {
     
     func resultRequestWrongNews(message: String) {
         hideInidicator()
-        self.refreshControl.endRefreshing()
+        refreshControl.endRefreshing()
         Utils.alert(viewController: self, title: Strings.Message.TITLE_ERROR, message: message, nameOkButton: Strings.Button.BUTTON_OK, nameCancelButton: nil, onClickButtonsAlerts: nil, idAlert: 0)
     }
     
     func errorRequestNews(message: String) {
         hideInidicator()
-        self.refreshControl.endRefreshing()
+        refreshControl.endRefreshing()
         Utils.alert(viewController: self, title: Strings.Message.TITLE_ERROR, message: message, nameOkButton: Strings.Button.BUTTON_OK, nameCancelButton: nil, onClickButtonsAlerts: nil, idAlert: 0)
     }
     
@@ -130,8 +136,9 @@ extension UIViewControllerNews: UICollectionViewDataSource, UICollectionViewDele
             scrollView.contentInset.bottom = previousScrollViewBottomInset
 
             self.presenterNews = PresenterNews(delegateViewNews: self)
-            self.presenterNews?.sendRequestNews(start: self.welcomeNews.count + 1, end: self.welcomeNews.count + 13)
-            
+            if !(self.presenterNews!.getIsOnSneding()){
+                self.presenterNews?.sendRequestNews(start: self.welcomeNews.count + 1, end: self.welcomeNews.count + 13)
+            }
         }
     }
 }
