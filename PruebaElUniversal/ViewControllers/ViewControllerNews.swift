@@ -99,13 +99,19 @@ extension UIViewControllerNews: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCellNew.self.description(), for: indexPath) as! CollectionViewCellNew
+        Utils._print("collectionView image: " + welcomeNews[indexPath.row].imageSmallSize!)
         cell.backgroundColor = UIColor.white
-        cell.lTitle.text = welcomeNews[indexPath.row + indexPath.section].title
+        cell.lTitle.text = welcomeNews[indexPath.row].title
         cell.ivUrlImage.pin_updateWithProgress = true
-        cell.ivUrlImage.pin_setImage(from: URL(string: welcomeNews[indexPath.row + indexPath.section].imageSmallSize!)!)
+        if  welcomeNews[indexPath.row].imageSmallSize! != "" {
+            cell.ivUrlImage.pin_setImage(from: URL(string: welcomeNews[indexPath.row].imageSmallSize!)!)
+            
+        }else {
+            cell.ivUrlImage.image = UIImage(named: "ic_universal")
+        }
         cell.ivUrlImage.contentMode = .scaleAspectFit
-        cell.lFecha.text = welcomeNews[indexPath.row + indexPath.section].pubdate! + " " + welcomeNews[indexPath.row + indexPath.section].pubtime!
-        cell.lSubtitle.text = welcomeNews[indexPath.row + indexPath.section].body?.replacingOccurrences(of: "\n", with: "")
+        cell.lFecha.text = welcomeNews[indexPath.row].pubdate! + " " + welcomeNews[indexPath.row + indexPath.section].pubtime!
+        cell.lSubtitle.text = welcomeNews[indexPath.row].body?.replacingOccurrences(of: "\n", with: "")
 
         return cell
         

@@ -206,7 +206,14 @@ extension UIViewControllerNewsDescription{
         lFecha.text = welcomeNews!.pubdate! + " " + welcomeNews!.pubtime!
         lLink.text = welcomeNews?.link
         ivUrlImage.pin_updateWithProgress = true
-        ivUrlImage.pin_setImage(from: URL(string: welcomeNews!.imageSmallSize!)!)
+        
+        if  welcomeNews!.imageSmallSize != "" {
+            ivUrlImage.pin_setImage(from: URL(string: welcomeNews!.imageSmallSize!)!)
+            
+        }else {
+            ivUrlImage.image = UIImage(named: "ic_universal")
+        }
+        
         onUINavigationBar?.shareButton(url: lLink.text!)
     }
 }
