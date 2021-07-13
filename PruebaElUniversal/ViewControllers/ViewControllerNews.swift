@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import PINRemoteImage
+//import PINRemoteImage
 
 class UIViewControllerNews: UIViewControllerGeneric{
     //let tableView = UITableView()
@@ -29,7 +29,7 @@ class UIViewControllerNews: UIViewControllerGeneric{
 extension UIViewControllerNews{
     
     private func initUI(){
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(red: 242, green: 243, blue: 244, alpha: 0.1)
         onUINavigationBar?.setTitleBar(title: "Noticias")
     
         let layout = UICollectionViewFlowLayout()
@@ -42,15 +42,16 @@ extension UIViewControllerNews{
         collectionView!.translatesAutoresizingMaskIntoConstraints = false
         
         collectionView!.backgroundColor = UIColor.white
-        collectionView!.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView!.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
         collectionView!.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor).isActive = true
         collectionView!.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        collectionView!.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        collectionView!.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor, constant: 10).isActive = true
         
         collectionView!.register(CollectionViewCellNew.self,forCellWithReuseIdentifier: CollectionViewCellNew.self.description())
         collectionView!.refreshControl = refreshControl
         
         refreshControl.addTarget(self, action: #selector(refeshNews), for: .valueChanged)
+        collectionView!.backgroundColor = .clear
     }
     @objc private func refeshNews(){
     
@@ -100,18 +101,18 @@ extension UIViewControllerNews: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCellNew.self.description(), for: indexPath) as! CollectionViewCellNew
         Utils._print("collectionView image: " + welcomeNews[indexPath.row].imageSmallSize!)
-        cell.backgroundColor = UIColor.white
         cell.lTitle.text = welcomeNews[indexPath.row].title
-        cell.ivUrlImage.pin_updateWithProgress = true
+        cell.ivUrlImage.loadImageFromUrl(from: URL(string: welcomeNews[indexPath.row].imageSmallSize!)!)
+        /*cell.ivUrlImage.pin_updateWithProgress = true
         if  welcomeNews[indexPath.row].imageSmallSize! != "" {
             cell.ivUrlImage.pin_setImage(from: URL(string: welcomeNews[indexPath.row].imageSmallSize!)!)
             
         }else {
             cell.ivUrlImage.image = UIImage(named: "ic_universal")
-        }
+        }*/
         cell.ivUrlImage.contentMode = .scaleAspectFit
         cell.lFecha.text = welcomeNews[indexPath.row].pubdate! + " " + welcomeNews[indexPath.row + indexPath.section].pubtime!
-        cell.lSubtitle.text = welcomeNews[indexPath.row].body?.replacingOccurrences(of: "\n", with: "")
+        cell.lSubtitle.text = welcomeNews[indexPath.row].summary?.replacingOccurrences(of: "\n", with: "")
 
         return cell
         

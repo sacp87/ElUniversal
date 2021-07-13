@@ -11,14 +11,14 @@ import UIKit
 
 class CollectionViewCellNew: UICollectionViewCell {
     
-    let vHeaderContainer:UIView = {
+    let vHeaderContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true // this will make sure its children do not go out of the boundary
         return view
     }()
     
-    let vTitleContainer:UIView = {
+    let vTitleContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true // this will make sure its children do not go out of the boundary
@@ -87,67 +87,74 @@ class CollectionViewCellNew: UICollectionViewCell {
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .clear
         let sizes = Sizes.instance()
-            self.contentView.backgroundColor = UIColor.white
-            
-            self.contentView.addSubview(vHeaderContainer)
-            vHeaderContainer.addSubview(ivIcon)
-            vHeaderContainer.addSubview(lTitleUniversal)
-            vHeaderContainer.addSubview(lFecha)
-            
-            self.contentView.addSubview(vTitleContainer)
-            vTitleContainer.addSubview(lTitle)
-            self.contentView.addSubview(ivUrlImage)
-            self.contentView.addSubview(vSubtitleContainer)
-            vSubtitleContainer.addSubview(lSubtitle)
-            
-            self.contentView.layer.cornerRadius = 10
-            self.contentView.layer.borderWidth = 1
-            
-            vHeaderContainer.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5).isActive = true
-            vHeaderContainer.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 5).isActive = true
-            vHeaderContainer.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: 5).isActive = true
-            vHeaderContainer.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 10 / 100).isActive = true
-            
-            ivIcon.topAnchor.constraint(equalTo: vHeaderContainer.topAnchor).isActive = true
-            ivIcon.leftAnchor.constraint(equalTo: vHeaderContainer.leftAnchor).isActive = true
-            ivIcon.widthAnchor.constraint(equalTo: vHeaderContainer.heightAnchor).isActive = true
-            ivIcon.heightAnchor.constraint(equalTo: vHeaderContainer.heightAnchor).isActive = true
-            
-            lTitleUniversal.topAnchor.constraint(equalTo: vHeaderContainer.topAnchor).isActive = true
-            lTitleUniversal.leftAnchor.constraint(equalTo: ivIcon.rightAnchor, constant: 5).isActive = true
-            lTitleUniversal.rightAnchor.constraint(equalTo: vHeaderContainer.rightAnchor).isActive = true
-            lTitleUniversal.heightAnchor.constraint(equalTo: vHeaderContainer.heightAnchor, multiplier: 1/2).isActive = true
-            
-            lFecha.topAnchor.constraint(equalTo: lTitleUniversal.bottomAnchor).isActive = true
-            lFecha.leftAnchor.constraint(equalTo: lTitleUniversal.leftAnchor).isActive = true
-            lFecha.rightAnchor.constraint(equalTo: lTitleUniversal.rightAnchor).isActive = true
-            lFecha.heightAnchor.constraint(equalTo: lTitleUniversal.heightAnchor).isActive = true
-            
-            vTitleContainer.topAnchor.constraint(equalTo: vHeaderContainer.bottomAnchor).isActive = true
-            vTitleContainer.leftAnchor.constraint(equalTo: self.contentView.leftAnchor).isActive = true
-            vTitleContainer.rightAnchor.constraint(equalTo: self.contentView.rightAnchor).isActive = true
-            vTitleContainer.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 15 / 100).isActive = true
-            
-            lTitle.centerYAnchor.constraint(equalTo: vTitleContainer.centerYAnchor).isActive = true
-            lTitle.centerXAnchor.constraint(equalTo: vTitleContainer.centerXAnchor).isActive = true
-            lTitle.widthAnchor.constraint(equalTo: vTitleContainer.widthAnchor, constant: -2 * sizes.MARGIN_WIDTH_ITEM_NEWS).isActive = true
-            lTitle.heightAnchor.constraint(equalTo: vTitleContainer.heightAnchor, constant: -2 * sizes.MARGIN_HEIGHT_ITEM_NEWS).isActive = true
-            
-            ivUrlImage.topAnchor.constraint(equalTo: vTitleContainer.bottomAnchor).isActive = true
-            ivUrlImage.leftAnchor.constraint(equalTo: self.contentView.leftAnchor).isActive = true
-            ivUrlImage.rightAnchor.constraint(equalTo: self.contentView.rightAnchor).isActive = true
-            ivUrlImage.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 60 / 100).isActive = true
+        let card = CardView()
+        card.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(card)
         
-            vSubtitleContainer.topAnchor.constraint(equalTo: ivUrlImage.bottomAnchor).isActive = true
-            vSubtitleContainer.leftAnchor.constraint(equalTo: self.contentView.leftAnchor).isActive = true
-            vSubtitleContainer.rightAnchor.constraint(equalTo: self.contentView.rightAnchor).isActive = true
-            vSubtitleContainer.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 15 / 100).isActive = true
-            
-            lSubtitle.centerYAnchor.constraint(equalTo: vSubtitleContainer.centerYAnchor).isActive = true
-            lSubtitle.centerXAnchor.constraint(equalTo: vSubtitleContainer.centerXAnchor).isActive = true
-            lSubtitle.widthAnchor.constraint(equalTo: vSubtitleContainer.widthAnchor, constant: -2 * sizes.MARGIN_WIDTH_ITEM_NEWS).isActive = true
-            lSubtitle.heightAnchor.constraint(equalTo: vSubtitleContainer.heightAnchor, constant: -2 * sizes.MARGIN_HEIGHT_ITEM_NEWS).isActive = true
+        card.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 1).isActive = true
+        card.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 1).isActive = true
+        card.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -1).isActive = true
+        card.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, constant: -1).isActive = true
+        card.addSubview(vHeaderContainer)
+        vHeaderContainer.addSubview(ivIcon)
+        vHeaderContainer.addSubview(lTitleUniversal)
+        vHeaderContainer.addSubview(lFecha)
+        
+        card.addSubview(vTitleContainer)
+        vTitleContainer.addSubview(lTitle)
+        card.addSubview(ivUrlImage)
+        card.addSubview(vSubtitleContainer)
+        vSubtitleContainer.addSubview(lSubtitle)
+        
+        /*card.layer.cornerRadius = 10
+        card.layer.borderWidth = 1*/
+        
+        vHeaderContainer.topAnchor.constraint(equalTo: card.topAnchor, constant: 5).isActive = true
+        vHeaderContainer.leftAnchor.constraint(equalTo: card.leftAnchor, constant: 5).isActive = true
+        vHeaderContainer.rightAnchor.constraint(equalTo: card.rightAnchor, constant: -5).isActive = true
+        vHeaderContainer.heightAnchor.constraint(equalTo: card.heightAnchor, multiplier: 10 / 100).isActive = true
+        
+        ivIcon.topAnchor.constraint(equalTo: vHeaderContainer.topAnchor).isActive = true
+        ivIcon.leftAnchor.constraint(equalTo: vHeaderContainer.leftAnchor).isActive = true
+        ivIcon.widthAnchor.constraint(equalTo: vHeaderContainer.heightAnchor).isActive = true
+        ivIcon.heightAnchor.constraint(equalTo: vHeaderContainer.heightAnchor).isActive = true
+        
+        lTitleUniversal.topAnchor.constraint(equalTo: vHeaderContainer.topAnchor).isActive = true
+        lTitleUniversal.leftAnchor.constraint(equalTo: ivIcon.rightAnchor, constant: 5).isActive = true
+        lTitleUniversal.rightAnchor.constraint(equalTo: vHeaderContainer.rightAnchor).isActive = true
+        lTitleUniversal.heightAnchor.constraint(equalTo: vHeaderContainer.heightAnchor, multiplier: 1/2).isActive = true
+        
+        lFecha.topAnchor.constraint(equalTo: lTitleUniversal.bottomAnchor).isActive = true
+        lFecha.leftAnchor.constraint(equalTo: lTitleUniversal.leftAnchor).isActive = true
+        lFecha.rightAnchor.constraint(equalTo: lTitleUniversal.rightAnchor).isActive = true
+        lFecha.heightAnchor.constraint(equalTo: lTitleUniversal.heightAnchor).isActive = true
+        
+        vTitleContainer.topAnchor.constraint(equalTo: vHeaderContainer.bottomAnchor).isActive = true
+        vTitleContainer.leftAnchor.constraint(equalTo: card.leftAnchor).isActive = true
+        vTitleContainer.rightAnchor.constraint(equalTo: card.rightAnchor).isActive = true
+        vTitleContainer.heightAnchor.constraint(equalTo: card.heightAnchor, multiplier: 15 / 100).isActive = true
+        
+        lTitle.centerYAnchor.constraint(equalTo: vTitleContainer.centerYAnchor).isActive = true
+        lTitle.centerXAnchor.constraint(equalTo: vTitleContainer.centerXAnchor).isActive = true
+        lTitle.widthAnchor.constraint(equalTo: vTitleContainer.widthAnchor, constant: -2 * sizes.MARGIN_WIDTH_ITEM_NEWS).isActive = true
+        lTitle.heightAnchor.constraint(equalTo: vTitleContainer.heightAnchor, constant: -2 * sizes.MARGIN_HEIGHT_ITEM_NEWS).isActive = true
+        
+        ivUrlImage.topAnchor.constraint(equalTo: vTitleContainer.bottomAnchor).isActive = true
+        ivUrlImage.leftAnchor.constraint(equalTo: card.leftAnchor).isActive = true
+        ivUrlImage.rightAnchor.constraint(equalTo: card.rightAnchor).isActive = true
+        ivUrlImage.heightAnchor.constraint(equalTo: card.heightAnchor, multiplier: 60 / 100).isActive = true
+    
+        vSubtitleContainer.topAnchor.constraint(equalTo: ivUrlImage.bottomAnchor).isActive = true
+        vSubtitleContainer.leftAnchor.constraint(equalTo: card.leftAnchor).isActive = true
+        vSubtitleContainer.rightAnchor.constraint(equalTo: card.rightAnchor).isActive = true
+        vSubtitleContainer.heightAnchor.constraint(equalTo: card.heightAnchor, multiplier: 15 / 100).isActive = true
+        
+        lSubtitle.centerYAnchor.constraint(equalTo: vSubtitleContainer.centerYAnchor).isActive = true
+        lSubtitle.centerXAnchor.constraint(equalTo: vSubtitleContainer.centerXAnchor).isActive = true
+        lSubtitle.widthAnchor.constraint(equalTo: vSubtitleContainer.widthAnchor, constant: -2 * sizes.MARGIN_WIDTH_ITEM_NEWS).isActive = true
+        lSubtitle.heightAnchor.constraint(equalTo: vSubtitleContainer.heightAnchor, constant: -2 * sizes.MARGIN_HEIGHT_ITEM_NEWS).isActive = true
     }
     /*override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

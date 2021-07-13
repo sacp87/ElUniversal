@@ -7,5 +7,6 @@ target 'PruebaElUniversal' do
   use_frameworks!
 
   # Pods for PruebaElUniversal
-pod 'PINRemoteImage', '~> 3.0.0-beta'
+pod 'Kingfisher', '~> 6.0'
+
 end

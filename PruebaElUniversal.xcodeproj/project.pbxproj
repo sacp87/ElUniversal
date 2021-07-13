@@ -28,6 +28,8 @@
 		9A5CABE924E6C4EF004D6F98 /* Sizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CABE824E6C4EF004D6F98 /* Sizes.swift */; };
 		9A5CABF424E6E739004D6F98 /* CollectionViewCellNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CABF324E6E739004D6F98 /* CollectionViewCellNew.swift */; };
 		9A5CABF624E7339D004D6F98 /* ViewControllerNewsDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5CABF524E7339D004D6F98 /* ViewControllerNewsDescription.swift */; };
+		9AAA56992698DA3600841379 /* ExtensionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAA56982698DA3600841379 /* ExtensionImageView.swift */; };
+		9AAA56A326993C5100841379 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAA56A226993C5100841379 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		9A5CABE824E6C4EF004D6F98 /* Sizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sizes.swift; sourceTree = "<group>"; };
 		9A5CABF324E6E739004D6F98 /* CollectionViewCellNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellNew.swift; sourceTree = "<group>"; };
 		9A5CABF524E7339D004D6F98 /* ViewControllerNewsDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerNewsDescription.swift; sourceTree = "<group>"; };
+		9AAA56982698DA3600841379 /* ExtensionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionImageView.swift; sourceTree = "<group>"; };
+		9AAA56A226993C5100841379 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +147,8 @@
 				9A5CABCF24E62E3B004D6F98 /* Constants.swift */,
 				9A5CABD324E62E91004D6F98 /* Strings.swift */,
 				9A5CABE824E6C4EF004D6F98 /* Sizes.swift */,
+				9AAA56982698DA3600841379 /* ExtensionImageView.swift */,
+				9AAA56A226993C5100841379 /* CardView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -200,7 +206,7 @@
 				9A5CABA724E61FE3004D6F98 /* Sources */,
 				9A5CABA824E61FE3004D6F98 /* Frameworks */,
 				9A5CABA924E61FE3004D6F98 /* Resources */,
-				874A6E3C21D2528106029869 /* [CP] Embed Pods Frameworks */,
+				93012EA2E0FCFFE6BDBE8E7C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -280,7 +286,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		874A6E3C21D2528106029869 /* [CP] Embed Pods Frameworks */ = {
+		93012EA2E0FCFFE6BDBE8E7C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -310,6 +316,8 @@
 				9A5CABDF24E63B26004D6F98 /* DelegateNews.swift in Sources */,
 				9A5CABC824E62CBD004D6F98 /* OnUINavigationBar.swift in Sources */,
 				9A5CABE924E6C4EF004D6F98 /* Sizes.swift in Sources */,
+				9AAA56992698DA3600841379 /* ExtensionImageView.swift in Sources */,
+				9AAA56A326993C5100841379 /* CardView.swift in Sources */,
 				9A5CABD624E633BC004D6F98 /* ViewControllerNews.swift in Sources */,
 				9A5CABB324E61FE4004D6F98 /* ViewController.swift in Sources */,
 				9A5CABAF24E61FE3004D6F98 /* AppDelegate.swift in Sources */,

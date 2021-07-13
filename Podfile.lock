@@ -1,34 +1,16 @@
 PODS:
-  - PINCache (3.0.1-beta.8):
-    - PINCache/Arc-exception-safe (= 3.0.1-beta.8)
-    - PINCache/Core (= 3.0.1-beta.8)
-  - PINCache/Arc-exception-safe (3.0.1-beta.8):
-    - PINCache/Core
-  - PINCache/Core (3.0.1-beta.8):
-    - PINOperation (~> 1.1.1)
-  - PINOperation (1.1.2)
-  - PINRemoteImage (3.0.0):
-    - PINRemoteImage/PINCache (= 3.0.0)
-  - PINRemoteImage/Core (3.0.0):
-    - PINOperation
-  - PINRemoteImage/PINCache (3.0.0):
-    - PINCache (= 3.0.1-beta.8)
-    - PINRemoteImage/Core
+  - Kingfisher (6.3.0)
 
 DEPENDENCIES:
-  - PINRemoteImage (~> 3.0.0-beta)
+  - Kingfisher (~> 6.0)
 
 SPEC REPOS:
   trunk:
-    - PINCache
-    - PINOperation
-    - PINRemoteImage
+    - Kingfisher
 
 SPEC CHECKSUMS:
-  PINCache: 534fd41d358d828dfdf227a0d327f3673a65e20b
-  PINOperation: 24b774353ca248fcf87d67b2d61eef42087c125a
-  PINRemoteImage: e2b89e19fb6e77ffc099f9d9f3b3fe1745e3f9f9
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
 
-PODFILE CHECKSUM: a496b928637cb3ce2e1b304b63ecb91d8260c415
+PODFILE CHECKSUM: 3253e43816a5c2f0e3da5182dc88e27c610f4c45
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1
